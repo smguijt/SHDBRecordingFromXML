@@ -1,0 +1,15 @@
+{
+  "name": "SHDBConvert",
+  "version": "1.0.0",
+  "description": "Convers SOAP Envelope output for SAP PO (XML) to SHDB recording file",
+  "main": "SHDBConvert.js",
+  "dependencies": {
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sietse Guijt",
+  "license": "ISC"
+}
