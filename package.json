@@ -4,7 +4,7 @@
   "description": "Convers SOAP Envelope output for SAP PO (XML) to SHDB recording file",
   "main": "SHDBConvert.js",
   "dependencies": {
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {},
   "scripts": {

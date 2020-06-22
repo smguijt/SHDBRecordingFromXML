@@ -35,6 +35,9 @@ if (argv.length > 1) {
 
 //Check Filename
 let filename = ''
+//filename = 'data/request.xml' //debug purpose
+//validToProceed = true; //debug purpose
+
 if (validToProceed) {
     if (argv[0] != '') {
         if (argv[0].indexOf('file:')) {
@@ -47,31 +50,51 @@ if (filename != '') {
 
     fs.readFile( __dirname + '/' + filename, "utf-8", function(err, data) {
         if (err) console.log(err);
-        //console.log(data);
-
-        //Remove SOAP Envelope Header 
         var tmpData = data;
-        tmpData = tmpData.replace('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sap-com:document:sap:rfc:functions"><soapenv:Header /><soapenv:Body>','');
-        tmpData = tmpData.replace('</soapenv:Body></soapenv:Envelope>','');
-        //console.log("" + tmpData);
-
-        //Remove namespace and ns0
         var tmpData2 = tmpData;
-        tmpData2 = tmpData2.replace('xmlns:ns0="urn:sap-com:document:sap:rfc:functions"','');
-        tmpData2 = tmpData2.replace('ns0:','').replace('/ns0:','/');
-        tmpData2 = tmpData2.replace('urn:','').replace('/urn:','/');
-        //console.log("" + tmpData2);
+
+        let parseEnvelope = '';
+        if (tmpData2.indexOf('SOAP:Envelope') != -1) { parseEnvelope = 'SOAP:Envelope'; }
+        if (tmpData2.indexOf('soapenv:Envelope') != -1) { parseEnvelope = 'soapenv:Envelope'; }
+
+        let parseBody = '';
+        if (tmpData2.indexOf('SOAP:Body') != -1) { parseBody = 'SOAP:Body'; }
+        if (tmpData2.indexOf('soapenv:Body') != -1) { parseBody = 'soapenv:Body'; }
+
+        let parseMode = false;
+        let parseTCode = false;
+        let parseTransaction = '';
+        if (tmpData2.indexOf('rfc:RFC_CALL_TRANSACTION_USING.Response') != -1) { 
+            parseTransaction = 'rfc:RFC_CALL_TRANSACTION_USING.Response'; 
+            parseMode = false;
+            parseTCode = false;
+        }
+        if (tmpData2.indexOf('urn:RFC_CALL_TRANSACTION_USING') != -1) { 
+            parseTransaction = 'urn:RFC_CALL_TRANSACTION_USING'; 
+            parseMode = true;
+            parseTCode = true;
+        }
+
+        
 
         parser.parseString (tmpData2,  function(err, result) {
             if (err) console.log(err);
                 var tmp = JSON.stringify(result);
-                //console.log("" + tmp);
-                //const separator = '         ';
                 const separator = '\t';
                 const data = JSON.parse(JSON.stringify(result));
-                const mode = (data['RFC_CALL_TRANSACTION_USING']['MODE']);
-                const tcode = (data['RFC_CALL_TRANSACTION_USING']['TCODE']);
-                const transaction_data = (data['RFC_CALL_TRANSACTION_USING']['BT_DATA']);
+
+                const soapEnvelope = data[parseEnvelope];    
+                const soapBody = soapEnvelope[parseBody];
+                const rfcTransaction = soapBody[parseTransaction];
+
+                let mode = '';
+                if (parseMode) { mode = rfcTransaction['MODE']}
+
+                let tcode = ''; 
+                if (parseTransaction) { tcode = rfcTransaction['TCODE']}
+
+                const transaction_data = rfcTransaction['BT_DATA'];
+
                 let program = pad(padding10,"",false);
                 let dynpro = pad(padding4,"0000",false);
                 let dynbegin = mode;

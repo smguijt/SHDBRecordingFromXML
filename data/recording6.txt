@@ -1,0 +1,53 @@
+          	0000	S	F-63                	                                                  	
+SAPLF040  	0100	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	/00                                               	
+          	0000	 	BKPF-BLDAT          	09122019                                          	
+          	0000	 	BKPF-BUKRS          	1400                                              	
+          	0000	 	BKPF-BUDAT          	14012020                                          	
+          	0000	 	BKPF-MONAT          	01                                                	
+          	0000	 	BKPF-WAERS          	EUR                                               	
+          	0000	 	BKPF-XBLNR          	VFA1915454                                        	
+          	0000	 	RF05V-NEWBS         	31                                                	
+          	0000	 	RF05V-NEWKO         	5003471                                           	
+SAPLF040  	0302	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=ZK                                               	
+          	0000	 	BSEG-WRBTR          	127,05                                            	
+          	0000	 	BSEG-ZTERM          	Z060                                              	
+          	0000	 	BSEG-ZUONR          	VFA1915454                                        	
+SAPLF040  	0332	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=AB                                               	
+SAPLF040  	0700	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	/00                                               	
+          	0000	 	RF05V-NEWBS         	40                                                	
+          	0000	 	RF05V-NEWKO         	4689022                                           	
+SAPLF040  	0300	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=ZK                                               	
+          	0000	 	BSEG-WRBTR          	105                                               	
+          	0000	 	BSEG-MWSKZ          	V5                                                	
+          	0000	 	BSEG-SGTXT          	testboeking MarcM13-01                            	
+SAPLKACB  	0002	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=ENTE                                             	
+SAPLF040  	330 	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=AB                                               	
+SAPLF040  	0700	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=PI                                               	
+          	0000	 	BDC_CURSOR          	RF05V-ANZDT(01)                                   	
+SAPLF040  	0302	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=STER                                             	
+SAPLTAX1  	0300	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=DELZ                                             	
+          	0000	 	BDC_OKCODE          	BSET-FWSTE(01)                                    	
+SAPLTAX1  	0300	X	                    	                                                  	
+          	0000	 	BSET-FWSTE(01)      	22,05                                             	
+          	0000	 	BSET-MWSKZ(01)      	V5                                                	
+          	0000	 	BSEG-BSCHL(01)      	40                                                	
+SAPLTAX1  	0300	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=GO                                               	
+SAPLF040  	0302	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=AB                                               	
+SAPLF040  	0700	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=BP                                               	
+SAPLF040  	0700	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	/EEND                                             	
+SAPLSPO1  	0200	X	                    	                                                  	
+          	0000	 	BDC_OKCODE          	=Yes                                              	
