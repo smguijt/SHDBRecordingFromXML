@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm:install",
+            "type": "npm",
+            "script": "install"
+        },
+        {
+            "label": "run script",
+            "type": "shell",
+            // "dependsOrder": "sequence",
+            // "dependsOn": [
+            //     "npm:install"
+            // ],
+            "command": "node SHDBConvert.js data/request.xml > data/SHDBOutput.txt"
+        }
+    ]
+}
